@@ -35,9 +35,9 @@
 	    			<div class="alert alert-danger">
 	    				<strong>Atenção!</strong>
 	    				<ul>
-	    					<% erros.forEach(function(erro){ %>
+	    					<% for(var erro of erros){ %>
 	    						<li><%= erro.msg%></li>    					
-	    					<% })  %>
+	    					<% }  %>
 	    				</ul>
 
 	    			</div>
