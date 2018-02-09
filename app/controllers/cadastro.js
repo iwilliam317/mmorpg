@@ -15,6 +15,7 @@ module.exports.cadastrar = function(application, req, res){
 	if (erros){
 		
 		res.render('cadastro', { erros: erros, dados : data})
+		return
 	}
 	
 	res.send('cadastro ok')
