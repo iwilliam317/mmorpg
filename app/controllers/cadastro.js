@@ -18,5 +18,7 @@ module.exports.cadastrar = function(application, req, res){
 		return
 	}
 	
-	res.send('cadastro ok')
+	let UsuarioDAO = new application.app.models.UsuarioDAO;
+	UsuarioDAO.cadastrarUsuario(data)
+	//res.send('cadastro ok')
 }
