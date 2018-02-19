@@ -1,10 +1,10 @@
-var mongo = require('mongodb');
+const mongo = require('mongodb');
 
-var connection = function(){
+const connection = function(){
 
-	var server = new mongo.Server('localhost', 27017,'');
+	const server = new mongo.Server('localhost', 27017,'');
 
-	var db = new mongo.Db(
+	const db = new mongo.Db(
 		'got', 
 		server,
 		{} 
