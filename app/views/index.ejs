@@ -20,11 +20,21 @@
 
 		<nav class="navbar navbar-default navbar-static-top">
 			<div class="container">
-				<form class="form-inline form-entrar">
+				<% if (erros.length > 0){ %>
+					<div class="alert alert-danger">
+						<strong>Atenção!</strong>
+						<ul>
+							<% erros.forEach(function(erro){ %>
+							<li><%= erro.msg   %></li>
+							<% }) %>
+						</ul>						
+					</div>
+				<% } %>
+				<form class="form-inline form-entrar" action="/autenticar" method="post">
 					<div class="form-group">				
-						<input type="text" name="usuario" id="usuario" placeholder="Usuário" class="form-control" autocomplete="off" />
-						<input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" />
-						<button type="button" class="btn btn-success">Entrar</button>
+						<input type="text" name="usuario" id="usuario" placeholder="Usuário" class="form-control" autocomplete="off" value="<%= dados.usuario %>" />
+						<input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" value="<%= dados.senha %>" />
+						<button type="submit" class="btn btn-success">Entrar</button>
 						<button type="button" class="btn btn-info" onclick="location.href='/cadastro'">Cadastro</button>
 					</div>
 				</form>
