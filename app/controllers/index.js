@@ -13,7 +13,10 @@ module.exports.autenticar = function(application, req, res){
 
   if (erros){   
     res.render("index",  {erros: erros, dados: dados}  )
-    //return
+    return
   }
-  res.send("tudo certo")
+  
+  let connection = application.config.dbConnection;
+  let UsuarioDAO = new application.app.models.UsuarioDAO(connection);
+  UsuarioDAO.autenticar(dados);
 }
