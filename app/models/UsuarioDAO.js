@@ -24,7 +24,7 @@ UsuarioDAO.prototype.autenticar = function(usuario, req, res){
         }
         
         if(req.session.autorizado){
-          res.redirect("jogo")
+          res.render("jogo", { img_casa : req.session.casa })
         }
         else{
           res.render('index', { erros :'', dados: '' });
