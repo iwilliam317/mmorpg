@@ -20,6 +20,19 @@ JogoDAO.prototype.gerarAtributos = function(usuario){
   })
 }
 
+JogoDAO.prototype.iniciar_jogo = function(req, res, usuario){
+  this._connection.open(function(error, mongoclient){
+    mongoclient.collection('jogo', function(error, collection){
+      collection.find({ usuario : usuario}).toArray(function(error, result){
+        console.log(result[0])
+          res.render('jogo', {img_casa : req.session.casa, jogo : result[0]});     
+      });
+      mongoclient.close();
+
+    });
+  }) 
+}
+
 module.exports = function () {
   return JogoDAO;
 }

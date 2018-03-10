@@ -22,5 +22,6 @@ module.exports.cadastrar = function(application, req, res){
 
 	var UsuarioDAO = new application.app.models.UsuarioDAO(connection);
 	UsuarioDAO.cadastrarUsuario(data)
+	res.redirect("/");
 	
 }
