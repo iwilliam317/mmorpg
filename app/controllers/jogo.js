@@ -13,7 +13,7 @@ module.exports = function(){
 
     let connection = application.config.dbConnection;
     let JogoDAO = new application.app.models.JogoDAO(connection);
-    JogoDAO.iniciar_jogo(req, res, usuario);
+    JogoDAO.iniciarJogo(req, res, usuario);
          
     
   }

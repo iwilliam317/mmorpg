@@ -20,7 +20,8 @@ JogoDAO.prototype.gerarAtributos = function(usuario){
   })
 }
 
-JogoDAO.prototype.iniciar_jogo = function(req, res, usuario){
+JogoDAO.prototype.iniciarJogo = function(req, res, usuario){
+  
   this._connection.open(function(error, mongoclient){
     mongoclient.collection('jogo', function(error, collection){
       collection.find({ usuario : usuario}).toArray(function(error, result){

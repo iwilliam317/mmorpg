@@ -1,4 +1,4 @@
-module.exports.carregar_index = function(application, req, res){
+module.exports.carregarIndex = function(application, req, res){
   res.render('index', { erros :'', dados: '' });
 }
 
