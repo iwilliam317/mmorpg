@@ -23,5 +23,13 @@ module.exports = function(){
     res.render('index', { erros :'', dados: '' });
   }
 
+  controller.aldeoes = function(application, req, res){
+      res.render('aldeoes', { erros :'', dados: '' });
+  }
+
+  controller.pergaminhos = function(application, req, res){
+       res.render('pergaminhos', { erros :'', dados: '' });
+  }
+
   return controller;
 }
