@@ -28,6 +28,16 @@
 						}
 					})
 				})
+
+				$("#img_pergaminhos").click(function(){
+					$.ajax({
+						url: "/pergaminhos",
+						method: "get",
+						success: function(data){
+							$("#acoes").html(data)
+						}
+					})
+				})
 			})
 		</script>
 	</head>
@@ -93,7 +103,7 @@
 					</div>
 					
 					<div class="col-sm-1">
-						<img src="images/outros/pergaminho.jpg" title="Pergaminhos" alt="Pergaminhos"/>
+						<img src="images/outros/pergaminho.jpg" title="Pergaminhos" alt="Pergaminhos" id="img_pergaminhos"/>
 					</div>
 					
 					<div class="col-sm-8"></div>
