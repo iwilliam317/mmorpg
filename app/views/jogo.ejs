@@ -18,6 +18,16 @@
 				$("#btn_sair").click(function(){
 					window.location.href = "/sair";
 				});
+
+				$("#img_suditos").click(function(){
+					$.ajax({
+						url: "/aldeoes",
+						method: "get",
+						success: function(data){
+							$("#acoes").html(data)
+						}
+					})
+				})
 			})
 		</script>
 	</head>
@@ -67,7 +77,7 @@
 			<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-9">
-					<div class="acoes"></div>					
+					<div class="acoes" id="acoes"></div>					
 				</div>
 			</div>
 			
@@ -78,7 +88,7 @@
 			
 				<div class="row">
 					<div class="col-sm-1">
-						<img src="images/outros/suditos.jpg" title="Aldeões" alt="Aldeões"/>
+						<img src="images/outros/suditos.jpg" title="Aldeões" alt="Aldeões" id="img_suditos"/>
 						<%= jogo.suditos %>
 					</div>
 					
