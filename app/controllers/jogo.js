@@ -31,5 +31,19 @@ module.exports = function(){
        res.render('pergaminhos', { erros :'', dados: '' });
   }
 
+  controller.ordenar_acao_sudito = function(application, req, res){
+
+      let dados = req.body;
+      req.assert('acao', 'Ação não pode ficar vazia').notEmpty();
+      req.assert('quantidade', 'Quantidade não pode ficar vazia').notEmpty();
+
+      let erros = req.validationErrors();
+      if (erros){
+        res.redirect("/jogo");
+       return
+      }
+        res.send('validacao ok');
+  }
+
   return controller;
 }
