@@ -44,6 +44,7 @@ module.exports = function(){
       req.assert('quantidade', 'Quantidade não pode ficar vazia').notEmpty();
 
       let erros = req.validationErrors();
+      
       if (erros){
         res.redirect("/jogo?comando_invalido=s");
        return
