@@ -34,6 +34,15 @@ JogoDAO.prototype.iniciarJogo = function(req, res, usuario, comando_invalido){
   }) 
 }
 
+JogoDAO.prototype.tomar_acao = function(acao){
+  this._connection.open(function(error, mongoclient){
+    mongoclient.collection('acao', function(error, collection){
+     collection.insert(acao)
+     mongoclient.close();
+   });
+  })
+}
+
 module.exports = function () {
   return JogoDAO;
 }

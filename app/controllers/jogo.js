@@ -40,6 +40,8 @@ module.exports = function(){
   controller.ordenar_acao_sudito = function(application, req, res){
 
       let dados = req.body;
+      dados.usuario = req.session.usuario;
+
       req.assert('acao', 'Ação não pode ficar vazia').notEmpty();
       req.assert('quantidade', 'Quantidade não pode ficar vazia').notEmpty();
 
@@ -49,7 +51,13 @@ module.exports = function(){
         res.redirect("/jogo?comando_invalido=s");
        return
       }
-        res.send('validacao ok');
+
+      let connection = application.config.dbConnection;
+      let JogoDAO = new application.app.models.JogoDAO(connection);
+
+      JogoDAO.tomar_acao(dados);
+
+      res.send('validacao ok');
   }
 
   return controller;
