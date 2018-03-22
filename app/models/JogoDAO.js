@@ -34,10 +34,23 @@ JogoDAO.prototype.iniciarJogo = function(req, res, usuario, comando_invalido){
   }) 
 }
 
-JogoDAO.prototype.tomar_acao = function(acao){
+JogoDAO.prototype.tomar_acao = function(dados){
   this._connection.open(function(error, mongoclient){
     mongoclient.collection('acao', function(error, collection){
-     collection.insert(acao)
+
+      let data = new Date;
+      let tempo_acao = null;
+
+      switch(dados.acao){
+        case 1: tempo_acao = 1 * 60 * 60000
+        case 2: tempo_acao = 2 * 60 * 60000
+        case 3: tempo_acao = 5 * 60 * 60000
+        case 4: tempo_acao = 5 * 60 * 60000
+      }
+
+      dados.acao_termina_em = data.getTime() + tempo_acao;
+
+     collection.insert(dados)
      mongoclient.close();
    });
   })
