@@ -20,13 +20,13 @@ JogoDAO.prototype.gerarAtributos = function(usuario){
   })
 }
 
-JogoDAO.prototype.iniciarJogo = function(req, res, usuario, comando_invalido){
+JogoDAO.prototype.iniciarJogo = function(req, res, usuario, msg){
   
   this._connection.open(function(error, mongoclient){
     mongoclient.collection('jogo', function(error, collection){
       collection.find({ usuario : usuario}).toArray(function(error, result){
         console.log(result[0])
-          res.render('jogo', {img_casa : req.session.casa, jogo : result[0], comando_invalido : comando_invalido});     
+          res.render('jogo', {img_casa : req.session.casa, jogo : result[0], msg : msg});     
       });
       mongoclient.close();
 

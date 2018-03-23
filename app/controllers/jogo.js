@@ -9,17 +9,17 @@ module.exports = function(){
       return;
     }
     
-    let comando_invalido = 'n';
+    let msg = '';
 
-    if (req.query.comando_invalido == "s"){
-      comando_invalido = req.query.comando_invalido;
+    if (req.query.msg != ""){
+      msg = req.query.msg;
     }
 
     let usuario = req.session.usuario;
 
     let connection = application.config.dbConnection;
     let JogoDAO = new application.app.models.JogoDAO(connection);
-    JogoDAO.iniciarJogo(req, res, usuario, comando_invalido);
+    JogoDAO.iniciarJogo(req, res, usuario, msg);
          
     
   }
@@ -55,7 +55,7 @@ module.exports = function(){
       let erros = req.validationErrors();
       
       if (erros){
-        res.redirect("/jogo?comando_invalido=s");
+        res.redirect("/jogo?msg=e");
        return
       }
 
@@ -64,7 +64,7 @@ module.exports = function(){
 
       JogoDAO.tomar_acao(dados);
 
-      res.send('validacao ok');
+      res.redirect("/jogo?msg=o");
   }
 
   return controller;

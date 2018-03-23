@@ -56,9 +56,14 @@
 
 	    <div class="container">
 
-		    <% if (comando_invalido == 's'){ %>
+		    <% if (msg == 'e'){ %>
 		    	<div class="alert alert-danger" id="msg">
 		    		<strong>Comando Inválido, informe todos os campos!</strong>
+		    	</div>
+		    <% } %>
+		    <% if (msg == 'o'){ %>
+		    	<div class="alert alert-warning" id="msg">
+		    		<strong>Ação realizada com sucesso!</strong>
 		    	</div>
 		    <% } %>
 	    	
