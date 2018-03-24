@@ -44,7 +44,7 @@ module.exports = function(){
        res.render('pergaminhos', { erros :'', dados: '' });
   }
 
-  controller.ordenar_acao_sudito = function(application, req, res){
+  controller.ordenarAcaoSudito = function(application, req, res){
 
       let dados = req.body;
       dados.usuario = req.session.usuario;
