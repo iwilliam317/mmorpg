@@ -34,7 +34,7 @@ JogoDAO.prototype.iniciarJogo = function(req, res, usuario, msg){
   }) 
 }
 
-JogoDAO.prototype.tomar_acao = function(dados){
+JogoDAO.prototype.tomarAcao = function(dados){
   this._connection.open(function(error, mongoclient){
     mongoclient.collection('acao', function(error, collection){
 
