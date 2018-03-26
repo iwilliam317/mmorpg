@@ -41,11 +41,11 @@ JogoDAO.prototype.tomarAcao = function(dados){
       let data = new Date;
       let tempo_acao = null;
 
-      switch(dados.acao){
-        case 1: tempo_acao = 1 * 60 * 60000
-        case 2: tempo_acao = 2 * 60 * 60000
-        case 3: tempo_acao = 5 * 60 * 60000
-        case 4: tempo_acao = 5 * 60 * 60000
+      switch(parseInt(dados.acao)){
+        case 1: tempo_acao = 1 * 60 * 60000; break;
+        case 2: tempo_acao = 2 * 60 * 60000; break;
+        case 3: tempo_acao = 5 * 60 * 60000; break;
+        case 4: tempo_acao = 5 * 60 * 60000; break;
       }
 
       dados.acao_termina_em = data.getTime() + tempo_acao;
