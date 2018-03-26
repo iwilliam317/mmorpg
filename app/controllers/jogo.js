@@ -40,8 +40,8 @@ module.exports = function(){
 
       let usuario = req.session.usuario;
 
-      JogoDAO.recuperarAcoes(usuario);
-       res.render('pergaminhos', { erros :'', dados: '' });
+      JogoDAO.recuperarAcoes(usuario, res);
+       
   }
 
   controller.ordenarAcaoSudito = function(application, req, res){
