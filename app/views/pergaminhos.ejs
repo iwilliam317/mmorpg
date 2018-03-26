@@ -5,12 +5,27 @@
 	<ul>
             <% if (acoes.length > 0) { %>
                 <% acoes.forEach(function(acao){ %>
-                    <li>Ação: <%= acao.acao %> | Quantidade: <%= acao.quantidade %></li>
+                    <%
+                       let txt_acao = "";
+                       switch(parseInt(acao.acao)) { 
+                          case 1: 
+                            txt_acao = "aldeão(ões) coletando recursos"; 
+                            break;
+                          case 2: 
+                            txt_acao = "enforcamento(s) programado"; 
+                            break;
+                          case 3: 
+                            txt_acao = "aldeão(ões) em treinamento de história"; 
+                            break;
+                          case 4: 
+                            txt_acao = "aldeão(ões) em treinamento de magia"; 
+                            break;
+
+                      } 
+                   %>
+
+                    <li><%= acao.quantidade %> <%= txt_acao %></li>
                 <% }) %>
             <% }%>
-		<li>1 enforcamento(s) programado - <small>restam 00000 segundos - <a href="#">revogar ordem</a></small></li>
-		<li>2 aldeão(ões) em treinamento de magia - <small>restam 00000 segundos - <a href="#">revogar ordem</a></small></li>
-		<li>1 aldeão(ões) em treinamento de história - <small>restam 00000 segundos - <a href="#">revogar ordem</a></small></li>
-		<li>5 aldeão(ões) coletando recursos - <small>restam 00000 segundos - <a href="#">revogar ordem</a></small></li>
 	</ul>
 </div>
