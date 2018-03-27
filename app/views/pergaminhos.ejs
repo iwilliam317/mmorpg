@@ -3,9 +3,10 @@
 	
 
 	<ul>
-            <% if (acoes.length > 0) { %>
-                <% acoes.forEach(function(acao){ %>
-                    <%
+            <% 
+            if (acoes.length > 0) { 
+                 acoes.forEach(function(acao){ 
+
                        let txt_acao = "";
                        switch(parseInt(acao.acao)) { 
                           case 1: 
@@ -22,10 +23,18 @@
                             break;
 
                       } 
-                   %>
 
-                    <li><%= acao.quantidade %> <%= txt_acao %></li>
-                <% }) %>
-            <% }%>
+                      let data = new Date();
+                      let momento_atual = data.getTime();
+                      let segundos_restantes = Math.round((acao.acao_termina_em - momento_atual) / 1000)
+
+             %>
+                    <li><%= acao.quantidade %> <%= txt_acao %> 
+                      <small> - restam <%= segundos_restantes %> segundos
+                      <a href="#">revogar ordem</a></small>
+                    </li>
+             <%    }) 
+              } %>
+             
 	</ul>
 </div>
