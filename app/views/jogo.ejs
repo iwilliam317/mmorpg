@@ -36,7 +36,10 @@
 						url: "/pergaminhos",
 						method: "get",
 						success: function(data){
-							$("#acoes").html(data)
+							$("#acoes").html(data);
+
+							//cleaning Timeout instance
+							clearTimeout(timerId);
 							cronometro();
 						}
 					})
@@ -45,6 +48,10 @@
 				})
 
 			})
+			
+			//used to reset the Timeout instance
+			let timerId = null;
+
 			function cronometro(){
 				$('.segundos_restantes').each(function(){
 					let segundos = $(this).html();
@@ -53,7 +60,7 @@
 					$(this).html(segundos_atuais);
 
 				})	
-					 setTimeout('cronometro()', 1000)
+					timerId = setTimeout('cronometro()', 1000)
 			}
 		</script>
 	</head>
