@@ -37,10 +37,24 @@
 						method: "get",
 						success: function(data){
 							$("#acoes").html(data)
+							cronometro();
 						}
 					})
+
+					
 				})
+
 			})
+			function cronometro(){
+				$('.segundos_restantes').each(function(){
+					let segundos = $(this).html();
+					let segundos_atuais = parseInt(segundos) - 1;
+
+					$(this).html(segundos_atuais);
+
+				})	
+					 setTimeout('cronometro()', 1000)
+			}
 		</script>
 	</head>
 
