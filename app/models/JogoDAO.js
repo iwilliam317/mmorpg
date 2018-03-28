@@ -60,7 +60,9 @@ JogoDAO.prototype.tomarAcao = function(dados){
 JogoDAO.prototype.recuperarAcoes = function(usuario, res){
     this._connection.open(function(error, mongoclient){
     mongoclient.collection('acao', function(error, collection){
-      collection.find({ usuario : usuario}).toArray(function(error, result){
+      let momento_atual = new Date().getTime();
+
+      collection.find({ usuario : usuario, acao_termina_em : {$gt : momento_atual }}).toArray(function(error, result){
         console.log(result)
         res.render('pergaminhos', { acoes : result });
             
