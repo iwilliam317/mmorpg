@@ -57,6 +57,10 @@
 					let segundos = $(this).html();
 					let segundos_atuais = parseInt(segundos) - 1;
 
+					if (segundos_atuais < 0){
+						window.location.href='/jogo?msg=a';
+					}
+
 					$(this).html(segundos_atuais);
 
 				})	
@@ -83,8 +87,13 @@
 		    	</div>
 		    <% } %>
 		    <% if (msg == 'o'){ %>
-		    	<div class="alert alert-warning" id="msg">
+		    	<div class="alert alert-success" id="msg">
 		    		<strong>Ação realizada com sucesso!</strong>
+		    	</div>
+		    <% } %>
+		    <% if (msg == 'a'){ %>
+		    	<div class="alert alert-success" id="msg">
+		    		<strong>Ação determinada já acabou!</strong>
 		    	</div>
 		    <% } %>
 	    	
