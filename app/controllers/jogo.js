@@ -67,5 +67,17 @@ module.exports = function(){
       res.redirect("/jogo?msg=o");
   }
 
+  controller.revogarAcao = function(application, req, res){
+
+      let id = req.query.id;     
+
+      let connection = application.config.dbConnection;
+      let JogoDAO = new application.app.models.JogoDAO(connection);
+
+      JogoDAO.revogarAcao(id);
+
+      res.redirect("/jogo?msg=o");
+  }
+
   return controller;
 }

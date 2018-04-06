@@ -93,6 +93,10 @@ JogoDAO.prototype.recuperarAcoes = function(usuario, res){
   }) 
 }
 
+JogoDAO.prototype.revogarAcao = function(id){
+  // TODO
+}
+
 module.exports = function () {
   return JogoDAO;
 }
