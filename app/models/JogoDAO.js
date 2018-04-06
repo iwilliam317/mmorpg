@@ -51,8 +51,28 @@ JogoDAO.prototype.tomarAcao = function(dados){
       dados.acao_termina_em = data.getTime() + tempo_acao;
 
      collection.insert(dados)
-     mongoclient.close();
+     // mongoclient.close();
    });
+
+     mongoclient.collection('jogo', function(error, collection){      
+
+      let moedas = null;
+
+      switch(parseInt(dados.acao)){
+       case 1: moedas = -2 * dados.quantidade; break;
+       case 2: moedas = -3 * dados.quantidade; break;
+       case 3: moedas = -1 * dados.quantidade; break;
+       case 4: moedas = -1 * dados.quantidade; break;
+      }
+
+      console.log(`moedas a serem removidas ${moedas}`);
+
+      collection.update(
+        { usuario : dados.usuario },
+        { $inc : {moeda : moedas} }
+        )
+    });
+    mongoclient.close();
   })
 }
 
