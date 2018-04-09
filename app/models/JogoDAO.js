@@ -1,3 +1,6 @@
+//Used to parse string id with objects id in mongodb
+const ObjectID = require('mongodb').ObjectId;
+
 function JogoDAO (connection){
   this._connection = connection()
 }
@@ -93,8 +96,18 @@ JogoDAO.prototype.recuperarAcoes = function(usuario, res){
   }) 
 }
 
-JogoDAO.prototype.revogarAcao = function(id){
-  // TODO
+JogoDAO.prototype.revogarAcao = function(res, id){
+  this._connection.open(function(error, mongoclient){
+  mongoclient.collection('acao', function(error, collection){
+    collection.remove( { _id: ObjectID(id)}, function(error, result){
+        res.redirect('/jogo?msg=d')
+      }
+      );
+          
+    });
+    mongoclient.close();
+
+  });
 }
 
 module.exports = function () {

@@ -74,9 +74,8 @@ module.exports = function(){
       let connection = application.config.dbConnection;
       let JogoDAO = new application.app.models.JogoDAO(connection);
 
-      JogoDAO.revogarAcao(id);
+      JogoDAO.revogarAcao(res, id);
 
-      res.redirect("/jogo?msg=o");
   }
 
   return controller;
