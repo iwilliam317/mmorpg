@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 function UsuarioDAO (connection){
   this._connection = connection()
 }
@@ -5,7 +7,9 @@ function UsuarioDAO (connection){
 UsuarioDAO.prototype.cadastrarUsuario = function(usuario){
   this._connection.open(function(error, mongoclient){
     mongoclient.collection('usuarios', function(error, collection){
-     collection.insert(usuario)
+      let senha_criptografada = crypto.createHash('md5').update(usuario.senha).digest("hex");
+      console.log(`${senha_criptografada} ${usuario.senha}`)
+     //collection.insert(usuario)
      mongoclient.close();
    });
   })
