@@ -20,6 +20,9 @@ var app = express();
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
+/* configurar porta padrão */
+app.set('port', 3000);
+
 /* configurar o middleware express.static */
 app.use(express.static('./app/public'));
 
