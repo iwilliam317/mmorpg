@@ -1,3 +1,4 @@
+// import module crypto for encrypting 
 const crypto = require('crypto');
 
 function UsuarioDAO (connection){
@@ -8,17 +9,23 @@ UsuarioDAO.prototype.cadastrarUsuario = function(usuario){
   this._connection.open(function(error, mongoclient){
     mongoclient.collection('usuarios', function(error, collection){
       let senha_criptografada = crypto.createHash('md5').update(usuario.senha).digest("hex");
-      console.log(`${senha_criptografada} ${usuario.senha}`)
-     //collection.insert(usuario)
+      //overriding with encrypted password
+      usuario.senha = senha_criptografada;
+      collection.insert(usuario);
+      
      mongoclient.close();
    });
   })
 }
 
 UsuarioDAO.prototype.autenticar = function(usuario, req, res){
-  let resultado = {};
+
   this._connection.open(function(error, mongoclient){
     mongoclient.collection('usuarios', function(error, collection){
+
+      let senha_criptografada = crypto.createHash('md5').update(usuario.senha).digest("hex");
+      usuario.senha = senha_criptografada;
+
       collection.find(usuario).toArray(function(error, result){
         console.log(result)
         if (result[0] != undefined){
