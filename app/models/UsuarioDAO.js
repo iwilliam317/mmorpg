@@ -38,7 +38,10 @@ UsuarioDAO.prototype.autenticar = function(usuario, req, res){
           res.redirect("jogo")
         }
         else{
-          res.render('index', { erros :'', dados: '' });
+          let erros = [ {msg: 'Usuário e/ou Senha inválidos', value: '' } ];
+          usuario.senha = '';
+          res.render('index', { erros : erros, dados: usuario });
+          return
         }
       });
       mongoclient.close();
